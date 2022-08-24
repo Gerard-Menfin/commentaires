@@ -1,0 +1,34 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Serie{% endblock %}
+
+{% block body %}
+    <h1>Serie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ serie.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ serie.titre }}</td>
+            </tr>
+            <tr>
+                <th>Synopsis</th>
+                <td>{{ serie.synopsis }}</td>
+            </tr>
+            <tr>
+                <th>Affiche</th>
+                <td>{{ serie.affiche }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_serie_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_serie_edit', {'id': serie.id}) }}">edit</a>
+
+    {{ include('admin/serie/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,22 @@
+<div class="card livre">
+    <h4 class="card-header">{{ serie.titre }}</h4>
+
+    <div class="row ">
+        <div class="col-4 d-flex align-items-center">
+            <img class="card-img p-1" src="">
+        </div>
+
+        <div class="col-8">
+            <div class="card-body">
+                <p class="card-text">Genres : {{ serie.genresTexte }} 
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+            <a href="{{ path('app_serie_comment', {id: serie.id}) }}" class="card-link">
+                <i class="fa fa-book"></i> Commenter
+            </a>
+        
+    </div>
+</div>  

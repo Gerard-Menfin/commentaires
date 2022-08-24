@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Serie{% endblock %}
+
+{% block body %}
+    <h1>Fiche Série</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ serie.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ serie.titre }}</td>
+            </tr>
+            <tr>
+                <th>Synopsis</th>
+                <td>{{ serie.synopsis }}</td>
+            </tr>
+            <tr>
+                <th>Affiche</th>
+                <td>{{ serie.affiche }}</td>
+            </tr>
+
+            <tr>
+                <th>Commentaires</th>
+                <td>
+                    {% for commentaire in serie.commentaires %}
+                        {{ include ("serie/commentaire_card.html.twig") }}
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Aucun commentaire</td>
+                        </tr>
+                    {% endfor %}
+            
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="">Sujet</label>
+            <input type="text" class="form-control" name="sujet">
+        </div>
+        <div class="form-group">
+            <label for="">Commentaire</label>
+            <input type="text" class="form-control" name="texte">
+        </div>
+        <button class="btn btn-primary">Poster un commentaire</button>
+    </form>
+{% endblock %}

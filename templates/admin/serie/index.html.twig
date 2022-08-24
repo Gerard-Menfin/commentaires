@@ -1,0 +1,45 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Serie index{% endblock %}
+
+{% block body %}
+    <h1>Serie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Genres</th>
+                <th>Synopsis</th>
+                <th>Affiche</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for serie in series %}
+            <tr>
+                <td>{{ serie.id }}</td>
+                <td>{{ serie.titre }}</td>
+                <td>
+                    {% for genre in serie.genres %}
+                        <a href="{{ path('app_admin_genre_show', {id: genre.id}) }}">{{ genre.libelle }}</a>{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ serie.synopsis|slice(0, 30) ~ "[...]" }}</td>
+                <td>{{ serie.affiche }}</td>
+                <td>
+                    <a href="{{ path('app_admin_serie_show', {'id': serie.id}) }}">show</a>
+                    <a href="{{ path('app_admin_serie_edit', {'id': serie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_serie_new') }}">Create new</a>
+{% endblock %}
